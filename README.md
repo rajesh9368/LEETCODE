@@ -92,3 +92,40 @@ class Solution {
         }
     }
 }***
+
+# https://leetcode.com/problems/isomorphic-strings/description/  -->( Isomorphic Strings)
+***class Solution {
+    public boolean isIsomorphic(String s, String t) {
+        if(s.length()!=t.length()) return false;
+        HashMap<Character,Character> mpp = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char sh = s.charAt(i);
+            char th = t.charAt(i);
+            if(mpp.containsKey(sh)){
+                if(mpp.get(sh)!=th) return false;
+            }
+            else if(mpp.containsValue(th)) return false;
+            mpp.put(sh,th);
+        }
+        return true;
+    }
+}***
+
+# https://www.geeksforgeeks.org/problems/frequency-of-array-elements-1587115620/0  -->(Frequencies of Limited Range Array Elements)
+***class Solution {
+    // Function to count the frequency of all elements from 1 to N in the array.
+    public static void frequencyCount(int arr[], int N, int P) {
+        // do modify in the given array
+        HashMap<Integer,Integer> mpp = new HashMap<>();
+        for(int i=0;i<arr.length;i++){
+            if(!mpp.containsKey(arr[i])) mpp.put(arr[i],1);
+            else mpp.put(arr[i],mpp.get(arr[i])+1);
+        }
+        P=1;
+        for(int i=0;i<arr.length;i++){
+            if(!mpp.containsKey(P)) arr[i]=0;
+            else arr[i]=mpp.get(P);
+            P++;
+        }
+    }
+}***
