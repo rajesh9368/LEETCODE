@@ -151,7 +151,7 @@ class Solution {
 }***
 
 # https://www.geeksforgeeks.org/problems/lcm-and-gcd4516/1  -->(LCM And GCD)
-***class Solution {
+***class Solution{
     static Long gcdi(Long A,Long B){
         if(B==0) return A;
         return gcdi(B,A%B);
@@ -161,8 +161,78 @@ class Solution {
        long maxi=Math.max(A,B);
        long gcd = gcdi(A,B);
        long lcm=0;
-
        lcm=(A*B)/gcd;
        return new Long[]{lcm,gcd};
+    }
+}***
+
+
+# https://leetcode.com/problems/valid-anagram/description/  -->(Valid Anagram)
+***class Solution {
+    public boolean isAnagram(String s, String t) {
+        HashMap<Character,Integer> mpp1 = new HashMap<>();
+        HashMap<Character,Integer> mpp2 = new HashMap<>();
+        for(int i=0;i<s.length();i++){
+            char sh = s.charAt(i);
+            if(mpp1.containsKey(sh)) mpp1.put(sh,mpp1.get(sh)+1);
+            else mpp1.put(sh,1);
+        }
+        for(int i=0;i<t.length();i++){
+            char th = t.charAt(i);
+            if(mpp2.containsKey(th)) mpp2.put(th,mpp2.get(th)+1);
+            else mpp2.put(th,1);
+        }
+        if(mpp1.equals(mpp2)) return true;
+        return false;
+    }
+}***
+
+# https://www.geeksforgeeks.org/problems/minimum-platforms-1587115620/1  -->(Minimum Platforms)
+***class Solution
+{
+    //Function to find the minimum number of platforms required at the
+    //railway station such that no train waits.
+    static int findPlatform(int arr[], int dep[], int n)
+    {
+        // add your code here
+        int plat=0,track=0;
+        Arrays.sort(arr);
+        Arrays.sort(dep);
+        int i=0,j=0;
+        while(i<n && j<n){
+            if(arr[i]<=dep[j]){
+                track++;
+                i++;
+            }
+            else{
+                track--;
+                j++;
+            }
+            plat=Math.max(plat,track);
+        }
+        return plat;
+    }
+}***
+
+
+#  https://www.geeksforgeeks.org/problems/node-at-a-given-index-in-linked-list/1  -->(Node at a given index in linked list)
+***class Solution {
+    public int GetNth(Node head, int index) {
+        // Code here
+        int i=index;
+        while(head!=null){
+        if(i==1) return head.data;
+            head=head.next;
+            i--;
+        }
+        return -1;
+    }
+}***
+
+# https://leetcode.com/problems/delete-node-in-a-linked-list/description/  -->( Delete Node in a Linked List)
+***class Solution {
+    public void deleteNode(ListNode node) {
+        node.val=node.next.val;
+        node.next=node.next.next;
     }
 }***
