@@ -253,4 +253,53 @@ class Solution {
     }
 }***
 
+# https://leetcode.com/problems/maximum-subarray/description/  -->(Maximum Subarray)
+***class Solution {
+    public int maxSubArray(int[] nums) {
+        int maxi = Integer.MIN_VALUE; 
+        int  sum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            sum += nums[i];
+            if (sum > maxi) {
+                maxi = sum;
+            }
+            if (sum < 0) {
+                sum = 0;
+            }
+        }
+        return maxi;
+    }
+}***
+
+# https://leetcode.com/problems/palindromic-substrings/description/  -->(Palindromic Substrings)
+***class Solution {
+    public boolean operation(String s,int i,int j){
+        while(i<j){
+            if(s.charAt(i)!=s.charAt(j)) return false;
+            i++;
+            j--;
+        }
+        return true;
+    }
+    public int countSubstrings(String s) {
+        int cnt=0;
+        for(int i=0;i<s.length();i++){
+            for(int j=i;j<s.length();j++){
+                if(operation(s,i,j)) cnt++;
+            }
+        }
+        return cnt;
+    }
+}***
+
+# https://leetcode.com/problems/maximum-depth-of-binary-tree/description/  -->(Maximum Depth of Binary Tree)
+***class Solution {
+    public int maxDepth(TreeNode root) {
+        if(root==null) return 0;
+        int left=1+maxDepth(root.left);
+        int right=1+maxDepth(root.right);
+        return Math.max(left,right);
+    }
+}***
+
 # 
